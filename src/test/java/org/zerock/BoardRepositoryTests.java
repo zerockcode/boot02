@@ -48,9 +48,13 @@ public class BoardRepositoryTests {
 	@Test
 	public void testRead() {
 
-		Board board = boardRepo.findOne(1L);
+		//Board board = boardRepo.findOne(1L);
 
-		System.out.println(board);
+		//System.out.println(board);
+		
+		boardRepo.findById(1L).ifPresent((board)->{
+			System.out.println(board);
+		});
 
 	}
 
@@ -58,7 +62,7 @@ public class BoardRepositoryTests {
 	public void testUpdate() {
 
 		System.out.println("Read First.........................");
-		Board board = boardRepo.findOne(1L);
+		Board board = boardRepo.findById(1L).get();
 
 		System.out.println("Update Title.......................");
 		board.setTitle("수정된 제목입니다");
